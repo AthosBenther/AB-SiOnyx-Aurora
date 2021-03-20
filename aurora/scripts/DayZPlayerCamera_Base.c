@@ -1,53 +1,36 @@
 modded class DayZPlayerCameraBase extends DayZPlayerCamera
 {
-	
-
-	override void OnUpdate(float pDt, out DayZPlayerCameraResult pOutResult)
-	{
-		super.OnUpdate(pDt, pOutResult);
-		StdFovUpdate(pDt, pOutResult);
-		if(IsCameraAurora()){
-			UpdateCameraAurora(PlayerBase.Cast(m_pPlayer));
-		}
-		else{
-			UpdateCameraNV(PlayerBase.Cast(m_pPlayer));
-		}
-		InitCameraOnPlayer();
-	}
-
 	bool IsCameraAurora()
 	{
 		Entity playerEnt = GetGame().GetPlayer();
 		PlayerBase Player = (PlayerBase)playerEnt;
-		NVGoggles nvg;
+		Aurora aurora;
 
 		if (Player.FindAttachmentBySlotName("Eyewear"))
 		{
-			nvg = NVGoggles.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
+			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 		}
-		else if (Player.FindAttachmentBySlotName("Headgear"))
+		else if ( !aurora && Player.FindAttachmentBySlotName("Headgear"))
 		{
-			nvg = NVGoggles.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+		}
+		else if ( !aurora && Player.FindAttachmentBySlotName("Hands"))
+		{
+			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Hands"));
 		}
 
-		return nvg.ConfigGetBool("AuroraOptic");
+		if(aurora){
+			return aurora.ConfigGetBool("AuroraOptic");
+		}
+
+		return false;
 	}
 
-	void SetCameraAurora(bool aurora)
-	{
-		m_IsAurora = aurora;
-	}
-
-	void UpdateCameraAurora(PlayerBase player)
-	{
-		if ( !player )
-			return;
-		
-		if ( player.IsNVGWorking() != IsCameraAurora() )
-		{
-			SetCameraAurora(player.IsNVGWorking());
-			SetCameraPP(true, this);
-		}
+	bool IsEntityAurora(EntityAI optics){
+		Aurora aurora = Aurora.Cast(optics);
+		bool isAurora = aurora.ConfigGetBool("AuroraOptic");
+		Print("IsEntityAurora: "+isAurora);
+		return isAurora;
 	}
 
 	//! by default sets camera PP to zero, regardless of parameter. Override if needed.
@@ -83,7 +66,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 
 	void SetNVPostprocess(int NVtype)
 	{
-		//Print("+++Setting NV type: " + NVtype + " +++");
+		Print("+++Setting NV type: " + NVtype + " +++");
 		switch (NVtype)
 		{
 		case NVTypes.NONE:
@@ -91,13 +74,11 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			PPEffects.SetColorizationNV(1.0, 1.0, 1.0);
 			PPEffects.SetNVParams(1.0, 0.0, 2.35, 2.75); //default values
 			break;
-
 		case NVTypes.NV_OPTICS_ON:
 			PPEffects.SetEVValuePP(7);
 			PPEffects.SetColorizationNV(0.0, 1.0, 0.0);
 			PPEffects.SetNVParams(3.0, 2.0, 9.0, 1.0);
 			break;
-
 		case NVTypes.NV_OPTICS_OFF:
 			PPEffects.SetEVValuePP(-10);
 			PPEffects.SetColorizationNV(0.0, 0.0, 0.0);
@@ -120,5 +101,4 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			PlayerBaseClient.Cast(m_pPlayer).SwitchPersonalLight(NVtype < 1); //TODO
 		}
 	}
-	protected bool m_IsAurora;
 }

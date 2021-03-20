@@ -6,14 +6,6 @@ class Aurora extends NVGoggles
 		m_WorkCheckTimer = new Timer;
 	}
 
-	override void SetActions()
-	{
-		super.SetActions();
-		
-		RemoveAction(ActionViewOptics);
-		//AddAction(ActionViewBinoculars);
-	}
-
 	override void RotateGoggles(bool state)
 	{
 		//if ( GetAnimationPhase("rotate") != state ) //useless?
