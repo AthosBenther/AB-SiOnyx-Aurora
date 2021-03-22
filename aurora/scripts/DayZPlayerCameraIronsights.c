@@ -16,10 +16,13 @@ modded class DayZPlayerCameraIronsights extends DayZPlayerCameraBase
 			
 			if (IsCameraNV())
 			{
-			    if (IsCameraAurora())
+			    if (IsCameraDualAurora())
 		    	{
 		    		SetNVPostprocess(99);
 		    	}
+				else if(IsCameraSingleAurora()){
+					SetNVPostprocess(98);
+				}
 		    	else
 		    	{
 		    		SetNVPostprocess(NVTypes.NV_GOGGLES);
@@ -54,10 +57,13 @@ modded class DayZPlayerCameraIronsights extends DayZPlayerCameraBase
 			
 		    if (IsCameraNV())
 		    {
-		    	if (IsCameraAurora())
+		    	if (IsCameraDualAurora())
 		    	{
 		    		SetNVPostprocess(99);
 		    	}
+				else if(IsCameraSingleAurora()){
+					SetNVPostprocess(98);
+				}
 		    	else
 		    	{
 		    		SetNVPostprocess(NVTypes.NV_GOGGLES);

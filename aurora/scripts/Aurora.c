@@ -1,4 +1,4 @@
-class Aurora extends NVGoggles
+class HMDAurora2 extends NVGoggles
 {
 	void Aurora()
 	{
@@ -25,4 +25,14 @@ class Aurora extends NVGoggles
 				GetCompEM().SwitchOff();
 		}
 	}
+}
+
+class HMDAurora extends NVGoggles{
+
+}
+class Aurora extends NVGoggles{
+
+}
+class RISAurora extends NVGoggles{
+
 }

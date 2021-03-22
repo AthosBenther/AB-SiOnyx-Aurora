@@ -1,36 +1,66 @@
 modded class DayZPlayerCameraBase extends DayZPlayerCamera
 {
-	bool IsCameraAurora()
+	bool IsCameraSingleAurora()
 	{
 		Entity playerEnt = GetGame().GetPlayer();
 		PlayerBase Player = (PlayerBase)playerEnt;
-		Aurora aurora;
+		HMDAurora aurora;
 
 		if (Player.FindAttachmentBySlotName("Eyewear"))
 		{
-			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
+			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 		}
 		else if ( !aurora && Player.FindAttachmentBySlotName("Headgear"))
 		{
-			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 		}
 		else if ( !aurora && Player.FindAttachmentBySlotName("Hands"))
 		{
-			aurora = Aurora.Cast(Player.FindAttachmentBySlotName("Hands"));
+			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Hands"));
 		}
 
 		if(aurora){
-			return aurora.ConfigGetBool("AuroraOptic");
+			return true;
+		}
+
+		return false;
+	}
+
+	bool IsCameraDualAurora()
+	{
+		Entity playerEnt = GetGame().GetPlayer();
+		PlayerBase Player = (PlayerBase)playerEnt;
+		HMDAurora2 aurora;
+
+		if (Player.FindAttachmentBySlotName("Eyewear"))
+		{
+			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
+		}
+		else if ( !aurora && Player.FindAttachmentBySlotName("Headgear"))
+		{
+			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+		}
+		else if ( !aurora && Player.FindAttachmentBySlotName("Hands"))
+		{
+			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Hands"));
+		}
+
+		if(aurora){
+			return true;
 		}
 
 		return false;
 	}
 
 	bool IsEntityAurora(EntityAI optics){
+		HMDAurora hmdaurora = HMDAurora.Cast(optics);
+		HMDAurora2 hmdaurora2 = HMDAurora2.Cast(optics);
 		Aurora aurora = Aurora.Cast(optics);
-		bool isAurora = aurora.ConfigGetBool("AuroraOptic");
-		Print("IsEntityAurora: "+isAurora);
-		return isAurora;
+		RISAurora risaurora = RISAurora.Cast(optics);
+		if(hmdaurora || hmdaurora2 || aurora || risaurora){
+			return true;
+		}
+		return false;
 	}
 
 	//! by default sets camera PP to zero, regardless of parameter. Override if needed.
@@ -43,8 +73,11 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 
 		if (IsCameraNV())
 		{
-			if (IsCameraAurora())
+			if (IsCameraSingleAurora())
 			{
+				SetNVPostprocess(98);
+			}
+			else if(IsCameraDualAurora()){
 				SetNVPostprocess(99);
 			}
 			else
@@ -88,6 +121,11 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			PPEffects.SetEVValuePP(7);
 			PPEffects.SetColorizationNV(0.0, 1.0, 0.0);
 			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
+			break;
+		case 98:
+			PPEffects.SetEVValuePP(3);
+			PPEffects.SetColorizationNV(1,0.5,1);
+			PPEffects.SetNVParams(3.0, 2.0, 9.0, 1.0);
 			break;
 		case 99:
 			PPEffects.SetEVValuePP(6);
