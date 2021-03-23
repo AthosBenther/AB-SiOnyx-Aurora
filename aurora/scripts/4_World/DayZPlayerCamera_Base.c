@@ -10,11 +10,11 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 		}
-		else if ( !aurora && Player.FindAttachmentBySlotName("Headgear"))
+		else if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 		}
-		else if ( !aurora && Player.FindAttachmentBySlotName("Hands"))
+		else if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Hands"));
 		}
@@ -36,11 +36,11 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 		}
-		else if ( !aurora && Player.FindAttachmentBySlotName("Headgear"))
+		else if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 		}
-		else if ( !aurora && Player.FindAttachmentBySlotName("Hands"))
+		else if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Hands"));
 		}
@@ -71,18 +71,16 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		PPEffects.OverrideDOF(false, 0, 0, 0, 0, 1);
 		PPEffects.SetBlurOptics(0);
 
-		if (IsCameraNV())
-		{
-			if (IsCameraSingleAurora())
+		if(IsCameraNV()){
+			if (IsCameraDualAurora())
 			{
-				SetNVPostprocess(98);
-			}
-			else if(IsCameraDualAurora()){
 				SetNVPostprocess(99);
 			}
-			else
-			{
-				SetNVPostprocess(NVTypes.NV_GOGGLES);
+			else if(IsCameraSingleAurora()){
+				SetNVPostprocess(98);
+			}
+			else{
+			SetNVPostprocess(NVTypes.NV_GOGGLES);
 			}
 		}
 		else
@@ -123,14 +121,14 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;
 		case 98:
-			PPEffects.SetEVValuePP(3);
+			PPEffects.SetEVValuePP(2); // Single hmdaurora
 			PPEffects.SetColorizationNV(1,0.5,1);
-			PPEffects.SetNVParams(3.0, 2.0, 9.0, 1.0);
+			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;
 		case 99:
-			PPEffects.SetEVValuePP(6);
+			PPEffects.SetEVValuePP(4); // Double hmdaurora
 			PPEffects.SetColorizationNV(1,0.5,1);
-			PPEffects.SetNVParams(3.0, 2.0, 9.0, 1.0);
+			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;
 		}
 

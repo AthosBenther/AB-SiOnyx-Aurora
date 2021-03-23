@@ -17,6 +17,7 @@ class cfgVehicles
     class Switchable_Base;
     class NVGoggles;
 	class KazuarOptic;
+	class BUISOptic;
 	class Aurora : KazuarOptic
 	{
 		scope = 2;
@@ -72,6 +73,14 @@ class cfgVehicles
 		inventorySlot[] = {"weaponOpticsHunting","weaponOptics","sniperOptics"};
 		weight = 250;
 	};
+	class RISCameraAdapter : BUISOptic
+	{
+		displayName = "RIS Camera Adapter";
+		model = "AB-SiOnyx-Aurora\aurora\ris.p3d";
+		descriptionShort = "An adapter to mount standard cameras that uses the 1/4 screw to RIS rails";
+		inventorySlot[] = {"weaponOpticsHunting","weaponOptics","sniperOptics"};
+		weight = 90;
+	};
     class HMDAurora2 : NVGoggles
     {
         scope = 2;
@@ -82,14 +91,24 @@ class cfgVehicles
 		itemSize[] = {3,3};
 		weight = 600;
 		AuroraOptic = 1;
-		repairCosts[] = {50.0};
+		repairCosts[] = {100.0};
     };
 	class HMDAurora : HMDAurora2
 	{
 		displayName = "Head mounted single SiOnyx Aurora";
 		model = "AB-SiOnyx-Aurora\aurora\hmdaurora.p3d";
-		attachments[] = {"BatteryD","BatteryD"};
 		weight = 400;
+		AuroraOptic = 1;
+		repairCosts[] = {50.0};
+	};
+	class RhinoMount : HMDAurora2
+	{
+		displayName = "Rhino Mount";
+		desctriptionShort = "A NVG mount";
+		model = "AB-SiOnyx-Aurora\aurora\rhino.p3d";
+		NVOptic = 0;
+		AuroraOptic = 0;
+		weight = 150;
 	};
 	class PreloadAurora: Inventory_Base
 	{
@@ -113,13 +132,23 @@ class CfgMods
 		version = "1.0";
 		extra = 0;
 		type = "mod";
-		dependencies[] = {"World"};
+		dependencies[] = {"Game","World"};
 		class defs
 		{
 			class worldScriptModule
 			{
 				value = "";
-				files[] = {"AB-SiOnyx-Aurora/aurora/scripts"};
+				files[] = {
+					"AB-SiOnyx-Aurora/aurora/scripts/4_World"
+				};
+			};
+			class gameScriptModule
+			{
+				value="";
+				files[]=
+				{
+					"AB-SiOnyx-Aurora/aurora/scripts/3_Game"
+				};
 			};
 		};
 	};

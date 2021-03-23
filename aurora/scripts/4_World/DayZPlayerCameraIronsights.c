@@ -3,7 +3,6 @@
 modded class DayZPlayerCameraIronsights extends DayZPlayerCameraBase
 {
 	// sets PP for ironsights and optics (override) cameras
-	// sets PP for ironsights and optics (override) cameras
 	override void SetCameraPP(bool state, DayZPlayerCamera launchedFrom)
 	{
 		//Print("SetCameraPP - ADS");
@@ -14,20 +13,18 @@ modded class DayZPlayerCameraIronsights extends DayZPlayerCameraBase
 			PPEffects.OverrideDOF(false, 0, 0, 0, 0, 1);
 			PPEffects.SetBlurOptics(0);
 			
-			if (IsCameraNV())
-			{
-			    if (IsCameraDualAurora())
-		    	{
-		    		SetNVPostprocess(99);
-		    	}
-				else if(IsCameraSingleAurora()){
-					SetNVPostprocess(98);
-				}
-		    	else
-		    	{
-		    		SetNVPostprocess(NVTypes.NV_GOGGLES);
-		    	}
+
+			if (IsCameraDualAurora())
+		    {
+		    	SetNVPostprocess(99);
+		    }
+			else if(IsCameraSingleAurora()){
+				SetNVPostprocess(98);
 			}
+		    else if((IsCameraNV()))
+		    {
+		    	SetNVPostprocess(NVTypes.NV_GOGGLES);
+		    }
 			else
 			{
 				SetNVPostprocess(NVTypes.NONE);
@@ -55,19 +52,16 @@ modded class DayZPlayerCameraIronsights extends DayZPlayerCameraBase
 				PPEffects.OverrideDOF(false, 0, 0, 0, 0, 1);
 			PPEffects.SetBlurOptics(0);
 			
-		    if (IsCameraNV())
+		    if (IsCameraDualAurora())
 		    {
-		    	if (IsCameraDualAurora())
-		    	{
-		    		SetNVPostprocess(99);
-		    	}
-				else if(IsCameraSingleAurora()){
-					SetNVPostprocess(98);
-				}
-		    	else
-		    	{
-		    		SetNVPostprocess(NVTypes.NV_GOGGLES);
-		    	}
+		    	SetNVPostprocess(99);
+		    }
+			else if(IsCameraSingleAurora()){
+				SetNVPostprocess(98);
+			}
+		    else if((IsCameraNV()))
+		    {
+		    	SetNVPostprocess(NVTypes.NV_GOGGLES);
 		    }
 			else
 			{
