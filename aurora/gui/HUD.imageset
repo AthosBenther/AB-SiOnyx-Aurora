@@ -1,0 +1,10 @@
+ImageSetClass {
+ Name "NewImageSet0"
+ RefSize 128 128
+ Textures {
+ }
+ Images {
+ }
+ Groups {
+ }
+}

@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{D36026B0F5C102D8}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0020_DInfo.edds"
+ Author "glados-m5"
+ ChangeDate 1036888701
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0020_DInfo.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

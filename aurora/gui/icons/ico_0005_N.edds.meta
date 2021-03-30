@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{2EA2A05B61E948AD}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0005_N.edds"
+ Author "glados-m5"
+ ChangeDate 1204136573
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0005_N.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

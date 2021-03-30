@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{061A27E1F0AFB12F}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0019_SDCard.edds"
+ Author "glados-m5"
+ ChangeDate 869116541
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0019_SDCard.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

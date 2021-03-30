@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{EC459AA4188AF93F}AB-SiOnyx-Aurora/Aurora/gui/icons/wifi.edds"
+ Author "glados-m5"
+ ChangeDate 404089469
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "wifi.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{10F7C182E5CF81BD}AB-SiOnyx-Aurora/Aurora/gui/icons/batt50.edds"
+ Author "glados-m5"
+ ChangeDate 1378740861
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "batt50.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

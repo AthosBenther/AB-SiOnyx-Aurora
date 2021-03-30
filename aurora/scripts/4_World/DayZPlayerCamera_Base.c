@@ -9,20 +9,19 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		if (Player.FindAttachmentBySlotName("Eyewear"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
+			if(aurora) return true;
 		}
 		else if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+			if(aurora) return true;
+
 		}
 		else if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Hands"));
+			if(aurora) return true;
 		}
-
-		if(aurora){
-			return true;
-		}
-
 		return false;
 	}
 
@@ -35,20 +34,18 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		if (Player.FindAttachmentBySlotName("Eyewear"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
+			if(aurora) return true;
 		}
 		else if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
+			if(aurora) return true;
 		}
 		else if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Hands"));
+			if(aurora) return true;
 		}
-
-		if(aurora){
-			return true;
-		}
-
 		return false;
 	}
 
@@ -95,7 +92,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		}
 	}
 
-	void SetNVPostprocess(int NVtype)
+	override void SetNVPostprocess(int NVtype)
 	{
 		Print("+++Setting NV type: " + NVtype + " +++");
 		switch (NVtype)
@@ -121,12 +118,12 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;
 		case 98:
-			PPEffects.SetEVValuePP(2); // Single hmdaurora
+			PPEffects.SetEVValuePP(3); // Single hmdaurora
 			PPEffects.SetColorizationNV(1,0.5,1);
 			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;
 		case 99:
-			PPEffects.SetEVValuePP(4); // Double hmdaurora
+			PPEffects.SetEVValuePP(6); // Double hmdaurora
 			PPEffects.SetColorizationNV(1,0.5,1);
 			PPEffects.SetNVParams(2.0, 1.0, 10.0, 1.0);
 			break;

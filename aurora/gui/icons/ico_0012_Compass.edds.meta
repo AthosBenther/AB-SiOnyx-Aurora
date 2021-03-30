@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{40C35F1449D56B29}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0012_Compass.edds"
+ Author "glados-m5"
+ ChangeDate 500017789
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0012_Compass.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

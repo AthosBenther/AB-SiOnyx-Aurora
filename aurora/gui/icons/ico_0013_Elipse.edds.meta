@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{A1EB3885D74BC21D}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0013_Elipse.edds"
+ Author "glados-m5"
+ ChangeDate 667789949
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0013_Elipse.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

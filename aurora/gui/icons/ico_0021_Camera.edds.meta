@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{34B9EF18BA097EA6}AB-SiOnyx-Aurora/Aurora/gui/icons/ico_0021_Camera.edds"
+ Author "glados-m5"
+ ChangeDate 1238215293
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "ico_0021_Camera.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

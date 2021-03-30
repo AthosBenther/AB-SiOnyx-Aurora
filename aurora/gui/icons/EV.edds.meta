@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{D5F63FD5C128800D}AB-SiOnyx-Aurora/Aurora/gui/icons/EV.edds"
+ Author "glados-m5"
+ ChangeDate 872802941
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "EV.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

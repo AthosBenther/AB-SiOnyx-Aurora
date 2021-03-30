@@ -1,0 +1,11 @@
+name = "AB SiOnyx Aurora";
+picture = "aurora/gui/images/dayz_editor_icon_black.edds";
+logo = "aurora/gui/images/dayz_editor_icon_black.edds";
+logoSmall = "aurora/gui/images/dayz_editor_icon_black.edds";
+logoOver = "aurora/gui/images/dayz_editor_icon_black.edds";
+tooltip = "aurora";
+overview = "";
+action = "";
+author = "";
+authorID = "";
+version = "";
