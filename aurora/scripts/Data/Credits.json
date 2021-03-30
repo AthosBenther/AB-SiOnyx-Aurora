@@ -1,11 +1,44 @@
 {
-    "Departments": [{
-        "DepartmentName": "Example",
-        "Sections": [{
-            "SectionName": "Developers",
-            "SectionLines": [
-                "DayZ Mod Template by InclementDab"
+    "Departments": [
+        {
+            "DepartmentName": "Benther Tech",
+            "Sections": [
+                {
+                    "SectionName": "Developer",
+                    "SectionLines": [
+                        "Athos Benther"
+                    ]
+                },
+                {
+                    "SectionName": "Internet Aquired Assets",
+                    "SectionLines": [
+                        "Original Rhino Mount by Kolitch",
+                        "Original SiOnyx Aurora model by GiterDunn"
+                    ]
+                }
             ]
-        }]
-    }]
+        },
+        {
+            "DepartmentName": "Athos Benther Mod Making - Discord Channel",
+            "Sections": [
+                {
+                    "SectionName": "Beta Tester",
+                    "SectionLines": [
+                        "Dyson"
+                    ]
+                }
+            ]
+        },
+        {
+            "DepartmentName": "Dayz Moddiers  - Discord Channel",
+            "Sections": [
+                {
+                    "SectionName": "Support",
+                    "SectionLines": [
+                        "All of the memebers of the Discord Channel that helped with this mods development"
+                    ]
+                }
+            ]
+        }
+    ]
 }

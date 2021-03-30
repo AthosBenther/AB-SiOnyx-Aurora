@@ -15,7 +15,6 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 			if(aurora) return true;
-
 		}
 		else if (Player.FindAttachmentBySlotName("Hands"))
 		{

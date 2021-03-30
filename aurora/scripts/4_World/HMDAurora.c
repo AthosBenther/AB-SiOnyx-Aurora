@@ -1,0 +1,1 @@
+class HMDAurora extends NVGoggles{};

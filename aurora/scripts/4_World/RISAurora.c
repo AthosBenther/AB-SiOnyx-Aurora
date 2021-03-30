@@ -1,0 +1,1 @@
+class RISAurora extends Aurora{};
