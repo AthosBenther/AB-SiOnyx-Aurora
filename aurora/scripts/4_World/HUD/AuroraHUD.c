@@ -49,9 +49,7 @@ class AuroraHUD{
 	}
 
 	void Update(){
-		if(m_Root){
-			count = count + 1;
-			
+		if(m_Root){		
 			int year, month, day, hour, minute;
 			GetGame().GetWorld().GetDate( year, month, day, hour, minute );
 			m_Clock.SetText(hour.ToString()+":"+minute.ToString());
