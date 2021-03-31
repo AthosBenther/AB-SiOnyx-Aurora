@@ -9,8 +9,8 @@ class HMDAurora2 extends NVGoggles
 
 	override void RotateGoggles(bool state)
 	{
-		//if ( GetAnimationPhase("rotate") != state ) //useless?
-			SetAnimationPhase("rotate",!state);
+		SetAnimationPhase("rotate",!state);
+		Print(GetAnimationPhase("rotate"));
 		m_IsLowered = !state;
 		
 		if (GetHierarchyRootPlayer())

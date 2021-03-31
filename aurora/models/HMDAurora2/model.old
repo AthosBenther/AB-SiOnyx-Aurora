@@ -1,0 +1,58 @@
+class cfgSkeletons
+{
+    class HMDAurora2_Skeleton
+    {
+        skeletonInherit = "";
+        isDiscrete = 1;
+        SkeletonBones[] =
+            {
+                "hide",
+                "hide",
+                "head",
+                "head"};
+    };
+};
+class CfgModels
+{
+    class Default
+    {
+        sections[] = {};
+        sectionsInherit = "";
+        skeletonName = "";
+    };
+    class HMDAurora2 : Default
+    {
+        skeletonName = "HMDAurora2_Skeleton";
+        sections[] =
+            {
+                "zbytek",
+                "head",
+                "hide"};
+        class Animations
+        {
+            class rotate
+            {
+                type = "rotation";
+                source = "user";
+                selection = "head";
+                axis = "head_axis";
+                sourceAddress = "clamp";
+                minValue = 0;
+                maxValue = 1;
+                angle0 = 0;
+                angle1 = 1.5707964;
+                memory = true;
+            };
+            class hide
+            {
+                type = "hide";
+                source = "user";
+                selection = "hide";
+                sourceAddress = clamp; // (default)
+                minValue = 0.0;        //rad 0.0
+                maxValue = 1.0;        //rad 57.29578
+                hideValue = 0.01;
+            };
+        };
+    };
+};
