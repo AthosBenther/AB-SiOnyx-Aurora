@@ -11,12 +11,12 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 			if(aurora) return true;
 		}
-		else if (Player.FindAttachmentBySlotName("Headgear"))
+		if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 			if(aurora) return true;
 		}
-		else if (Player.FindAttachmentBySlotName("Hands"))
+		if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora.Cast(Player.FindAttachmentBySlotName("Hands"));
 			if(aurora) return true;
@@ -35,12 +35,12 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Eyewear").FindAttachmentBySlotName("NVG"));
 			if(aurora) return true;
 		}
-		else if (Player.FindAttachmentBySlotName("Headgear"))
+		if (Player.FindAttachmentBySlotName("Headgear"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Headgear").FindAttachmentBySlotName("NVG"));
 			if(aurora) return true;
 		}
-		else if (Player.FindAttachmentBySlotName("Hands"))
+		if (Player.FindAttachmentBySlotName("Hands"))
 		{
 			aurora = HMDAurora2.Cast(Player.FindAttachmentBySlotName("Hands"));
 			if(aurora) return true;
@@ -76,7 +76,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 				SetNVPostprocess(98);
 			}
 			else{
-			SetNVPostprocess(NVTypes.NV_GOGGLES);
+					SetNVPostprocess(NVTypes.NV_GOGGLES);
 			}
 		}
 		else
