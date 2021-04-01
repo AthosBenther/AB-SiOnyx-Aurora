@@ -1,2 +1,2 @@
-class RhinoMount extends NVGoggles{};
+class RhinoMount extends NVGoggles {};
 class RISCameraAdapter extends BUISOptic{};
