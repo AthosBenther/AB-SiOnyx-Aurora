@@ -25,5 +25,20 @@ class cfgVehicles
 		weight = 400;
 		AuroraOptic = 1;
 		repairCosts[] = {50.0};
+		class AnimationSources
+		{
+			class hide
+			{
+				source = "user";
+				animPeriod = 0.01;
+				initPhase = 0;
+			};
+			class rotate
+			{
+				source = "user";
+				animPeriod = 0.3;
+				initPhase = 0;
+			};
+		};
 	};
 };
