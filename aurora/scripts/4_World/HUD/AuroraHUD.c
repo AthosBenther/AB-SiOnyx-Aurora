@@ -50,26 +50,38 @@ class AuroraHUD{
 
 	void Update(){
 		if(m_Root){		
+			
+			//Clock
 			int year, month, day, hour, minute;
 			GetGame().GetWorld().GetDate( year, month, day, hour, minute );
 			m_Clock.SetText(hour.ToString()+":"+minute.ToString());
 
+			//Exposure
 			m_EV.SetText(world.GetEyeAccom().ToString());
 			
+			
+			//Coordinates
 			float Long, Lat;
 			Long = world.GetLongitude();
 			Lat = world.GetLatitude();
+			
+			
 			vector pos = GetGame().GetPlayer().GetPosition();
-			m_Coord0.SetText(pos[0].ToString());
-			m_Coord1.SetText(pos[1].ToString());
+			
+			Long = Long + 30.00;
+			Lat = 56.00 - Lat;
+			
+			//m_Coord0.SetText(Long.ToString() + " + " + pos[2].ToString());
+			//Print(DDtoDMS(Long));
+			float XDD = MeterToDD(pos[2]);
+			float YDD = MeterToDD(pos[0],Long);
+			m_Coord0.SetText(DDtoDMS(Long + XDD) + "N");
+			//m_Coord1.SetText(Lat.ToString() + " + " + pos[0].ToString())
+			;m_Coord1.SetText(DDtoDMS(Lat + YDD) + "E");
 
 			
 			vector angles = parent.GetOrientation();
-			
-			
-			Log("Angle: " + ((int)(angles[0]+0)).ToString());
-			Log("Float: " + ((int)((angles[0] - 22.5)/45)).ToString());
-			
+
 			
 
 
@@ -85,6 +97,26 @@ class AuroraHUD{
 			m_DInfo1.SetText(info);
 			m_DInfo2.SetText(x.ToString() + "P");
 		}
+	}
+	
+	string DDtoDMS(float DD){
+		int d = (int)DD;
+		int  m = (int)((DD-d)*60);
+		float s = (DD-d-((float)(m)/60))*3600;
+		return d.ToString() + "° " + m.ToString()+ "' " + s.ToString().Substring(0,5) + "\" ";
+	}
+	
+	float MeterToDD(float distance, float long = 0, float EarthCircumference = 40075){
+		float DegDistAtEqu = EarthCircumference / 360;
+		float rads = DegToRad(long);
+		float cos = Math.Cos(rads);
+		float DegDistAtLong = DegDistAtEqu * cos;
+		float DD = distance / 1000 / DegDistAtLong;
+		return DD;
+	}
+	
+	float DegToRad(float degrees){
+		return degrees * (3.14159 / 180);
 	}
 	
 	void UpdateNeedle(float direction){

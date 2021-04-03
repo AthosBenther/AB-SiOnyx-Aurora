@@ -171,7 +171,7 @@ FrameWidgetClass rootFrame {
    style Normal
    text "035deg47\"23' N"
    "exact text" 0
-   text_proportion 0.5
+   text_proportion 0.75
    "size to text h" 1
    "size to text v" 1
    "text valign" center
@@ -189,7 +189,7 @@ FrameWidgetClass rootFrame {
    style Normal
    text "035deg47\"23' W"
    "exact text" 0
-   text_proportion 0.5
+   text_proportion 0.75
    "size to text h" 1
    "size to text v" 1
    "text valign" center
