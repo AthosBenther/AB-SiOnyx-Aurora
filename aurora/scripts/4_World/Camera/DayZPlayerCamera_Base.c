@@ -51,7 +51,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 	bool IsEntityAurora(EntityAI optics){
 		HMDAurora hmdaurora = HMDAurora.Cast(optics);
 		HMDAurora2 hmdaurora2 = HMDAurora2.Cast(optics);
-		Aurora aurora = Aurora.Cast(optics);
+		AuroraCamera aurora = AuroraCamera.Cast(optics);
 		RISAurora risaurora = RISAurora.Cast(optics);
 		if(hmdaurora || hmdaurora2 || aurora || risaurora){
 			return true;
@@ -93,7 +93,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 
 	override void SetNVPostprocess(int NVtype)
 	{
-		Print("+++Setting NV type: " + NVtype + " +++");
+		//Print("+++Setting NV type: " + NVtype + " +++");
 		switch (NVtype)
 		{
 		case NVTypes.NONE:
@@ -108,7 +108,7 @@ modded class DayZPlayerCameraBase extends DayZPlayerCamera
 			break;
 		case NVTypes.NV_OPTICS_OFF:
 			PPEffects.SetEVValuePP(-10);
-			PPEffects.SetColorizationNV(0.0, 0.0, 0.0);
+			PPEffects.SetColorizationNV(1.0, 1.0, 1.0);
 			PPEffects.SetNVParams(1.0, 0.0, 2.35, 2.75); //default values
 			break;
 		case NVTypes.NV_GOGGLES:

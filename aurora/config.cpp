@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Aurora
+	class AuroraCamera
 	{
 		units[] = {};
 		weapons[] = {};
@@ -13,14 +13,14 @@ class CfgPatches
 };
 class CfgMods
 {
-	class Aurora
+	class AuroraCamera
 	{
 		dir = "Aurora";
 		picture = "";
 		action = "";
 		hideName = 1;
 		hidePicture = 1;
-		name = "Aurora";
+		name = "SiOnyx Aurora";
 		credits = "Athos Benther";
 		author = "Athos Benther";
 		authorID = "0";

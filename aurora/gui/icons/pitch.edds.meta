@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{F27D4B64EBFEDC8A}AB-SiOnyx-Aurora/Aurora/gui/icons/pitch.edds"
+ Author "glados-m5"
+ ChangeDate 1966942851
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "pitch.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

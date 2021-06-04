@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{9CA9A347F879CAC9}AB-SiOnyx-Aurora/Aurora/gui/icons/hud.edds"
+ Author "glados-m5"
+ ChangeDate -249763197
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "hud.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

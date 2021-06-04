@@ -1,6 +1,8 @@
 class AuroraHUD{
-
+	protected Widget			m_Root;
+	
     protected TextWidget		m_Clock;
+	protected TextWidget		m_Time;
 	protected TextWidget		m_EV;
 	protected TextWidget		m_Coord0;
 	protected TextWidget		m_Coord1;
@@ -9,10 +11,16 @@ class AuroraHUD{
 	protected TextWidget		m_DInfo1;
 	protected TextWidget		m_DInfo2;
 	protected ImageWidget		m_Needle;
-	protected Widget			m_Root;
+	
+	protected ImageWidget		m_Crosshair;
+	protected ImageWidget		m_Roll;
+	protected ImageWidget		m_Pitch;
+	
 	protected World				world;
 	protected PoweredOptic_Base	parent;
 	protected PlayerBase 		Player;
+	protected int				Updates;
+	protected int				LazyUpdates;
 
 
 	void AuroraHUD(PoweredOptic_Base Parent){
@@ -33,15 +41,23 @@ class AuroraHUD{
 		m_HDG = TextWidget.Cast(m_Root.FindWidget("HDG"));
 		m_HDGICO = TextWidget.Cast(m_Root.FindWidget("HDGICO"));
 		m_Clock = TextWidget.Cast(m_Root.FindWidget("Clock"));
+		m_Time = TextWidget.Cast(m_Root.FindWidget("Time"));
 		m_DInfo1 = TextWidget.Cast(m_Root.FindWidget("DInfo1"));
 		m_DInfo2 = TextWidget.Cast(m_Root.FindWidget("DInfo2"));
 		m_EV = TextWidget.Cast(m_Root.FindWidget("EV"));
 		m_Needle = ImageWidget.Cast(m_Root.FindWidget("Needle"));
+		
+		m_Crosshair = ImageWidget.Cast(m_Root.FindWidget("Crosshair"));
+		m_Roll = ImageWidget.Cast(m_Crosshair.FindWidget("Roll"));
+		m_Pitch = ImageWidget.Cast(m_Crosshair.FindWidget("Pitch"));
 
 		m_Coord0.SetText("- - - N");
 		m_Coord1.SetText("- - - W");
 
 		world = GetGame().GetWorld();
+		Updates = 0;
+		LazyUpdates = 100; // every 10 seconds;
+		LazyUpdate();
 	}
 
 	void Stop(){
@@ -49,15 +65,66 @@ class AuroraHUD{
 	}
 
 	void Update(){
-		if(m_Root){		
+		if(m_Root){			
+			//Battery
+			//Print(parent.GetCompEM().GetEnergyLevel());
+
+
+			//Pitch, Yaw, Roll
+			vector angles = parent.GetOrientation();
+			m_HDG.SetText(AngleToCardinal(angles[0]));
 			
-			//Clock
+			//Update m_Roll
+			float angle = angles[1];
+			angle = Math.Clamp(angle, -49.5, 49.5);
+			m_Roll.SetRotation(0,0,angle);
+			
+			//Update m_Pitch
+			float px, py;
+			m_Pitch.GetPos(px,py);
+			float Pitch;
+			
+			if(RISAurora.Cast(parent)){
+				Print("Parent is RISAurora");
+				Pitch = angles[2] + 90.0;
+			}
+			else
+			{
+				Pitch = (angles[2] - 90.0) * -1.0;
+			}
+			
+			Pitch = Math.Clamp(Pitch, -50, 50);
+			float pitchPercent = Pitch * 2;
+			float finalPitch = (0.1725/100) * pitchPercent;
+			m_Pitch.SetPos(0.425,finalPitch,true);
+			
+			if(Updates >= LazyUpdates){
+				LazyUpdate();
+				Updates = 0;
+			}
+			
+			Updates++;
+		}
+	}
+	
+	void LazyUpdate(){
+			//Clocks
 			int year, month, day, hour, minute;
 			GetGame().GetWorld().GetDate( year, month, day, hour, minute );
 			m_Clock.SetText(hour.ToString()+":"+minute.ToString());
+			int rhour, rminute, rsecond;
+			GetHourMinuteSecond(rhour,rminute,rsecond);
+			
+			string shour = rhour.ToString();
+			string sminute = rminute.ToString();
+			
+			if(shour.Length() == 1) shour = "0" + shour;
+			if(sminute.Length() == 1) sminute = "0" + sminute;
+			
+			m_Time.SetText(shour+ ":" + sminute);
 
 			//Exposure
-			m_EV.SetText(world.GetEyeAccom().ToString());
+			//m_EV.SetText("+6");
 			
 			
 			//Coordinates
@@ -65,38 +132,25 @@ class AuroraHUD{
 			Long = world.GetLongitude();
 			Lat = world.GetLatitude();
 			
-			
 			vector pos = GetGame().GetPlayer().GetPosition();
 			
 			Long = Long + 30.00;
 			Lat = 56.00 - Lat;
 			
-			//m_Coord0.SetText(Long.ToString() + " + " + pos[2].ToString());
-			//Print(DDtoDMS(Long));
 			float XDD = MeterToDD(pos[2]);
 			float YDD = MeterToDD(pos[0],Long);
 			m_Coord0.SetText(DDtoDMS(Long + XDD) + "N");
-			//m_Coord1.SetText(Lat.ToString() + " + " + pos[0].ToString())
-			;m_Coord1.SetText(DDtoDMS(Lat + YDD) + "E");
-
+			m_Coord1.SetText(DDtoDMS(Lat + YDD) + "E");
+		
+			// FPS info
+			string fps;
+			fps = ((int)(0.1/GetGame().GetFps())).ToString() + "0 FPS";
+			m_DInfo1.SetText(fps);
 			
-			vector angles = parent.GetOrientation();
-
-			
-
-
-			//UpdateNeedle(angles[0]);
-			m_HDG.SetText(AngleToCardinal(angles[0]));
-			
-			string info = "alala";
+			//Screen Size
 			int x,y;
 			GetScreenSize(x,y);
-			
-			info = ((int)(0.1/GetGame().GetFps())).ToString() + "0 FPS";
-			
-			m_DInfo1.SetText(info);
 			m_DInfo2.SetText(x.ToString() + "P");
-		}
 	}
 	
 	string DDtoDMS(float DD){
@@ -121,6 +175,10 @@ class AuroraHUD{
 	
 	void UpdateNeedle(float direction){
 		m_Needle.SetRotation(0,0,direction,true);
+	}
+	
+	void UpdateRoll(float angle){
+		
 	}
 
 	string AngleToCardinal(float HDG){

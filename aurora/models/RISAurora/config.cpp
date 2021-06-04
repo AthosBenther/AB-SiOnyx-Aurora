@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Aurora
+	class AuroraCamera
 	{
 		units[] = {};
 		weapons[] = {};
@@ -61,6 +61,13 @@ class cfgVehicles
 				animPeriod = 0.01;
 				initPhase = 0;
 			};
+		};
+		class EnergyManager
+		{
+			hasIcon = 1;
+			energyUsagePerSecond = 0.02;
+			plugType = 1;
+			attachmentAction = 1;
 		};
 	};
 };

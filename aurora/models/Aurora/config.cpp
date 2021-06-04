@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Aurora
+	class AuroraCamera
 	{
 		units[] = {};
 		weapons[] = {};
@@ -14,7 +14,7 @@ class CfgPatches
 class cfgVehicles
 {
 	class NVGoggles;
-	class Aurora : NVGoggles
+	class AuroraCamera : NVGoggles
 	{
 		scope = 2;
 		displayName = "SiOnyx Aurora";

@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Aurora
+	class AuroraCamera
 	{
 		units[] = {};
 		weapons[] = {};

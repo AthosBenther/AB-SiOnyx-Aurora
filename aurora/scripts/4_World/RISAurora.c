@@ -1,1 +1,1 @@
-class RISAurora extends Aurora{};
+class RISAurora extends AuroraCamera{};

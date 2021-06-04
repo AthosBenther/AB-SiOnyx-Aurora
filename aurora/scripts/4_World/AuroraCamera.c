@@ -1,4 +1,4 @@
-class Aurora extends NVGoggles{
+class AuroraCamera extends NVGoggles{
 	
 	protected ref Timer 				m_Timer;
 	protected ref AuroraHUD 			HUD;
@@ -49,7 +49,7 @@ class Aurora extends NVGoggles{
 			
 		HUD.Start();
 				
-		m_Timer.Run( 0.3, HUD, "Update", null, true);
+		m_Timer.Run( 0.05, HUD, "Update", null, true);
 	}
 	
 	void StopPeriodicMeasurement()
