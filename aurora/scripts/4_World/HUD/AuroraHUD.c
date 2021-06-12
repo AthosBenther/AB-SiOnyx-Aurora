@@ -85,7 +85,7 @@ class AuroraHUD{
 			float Pitch;
 			
 			if(RISAurora.Cast(parent)){
-				Print("Parent is RISAurora");
+				//Print("Parent is RISAurora");
 				Pitch = angles[2] + 90.0;
 			}
 			else

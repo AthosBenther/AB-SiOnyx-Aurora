@@ -2,7 +2,7 @@ modded class DayZPlayerCameraOptics : DayZPlayerCameraIronsights
 {	
 	override void SetCameraPP(bool state,DayZPlayerCamera launchedFrom)
 	{
-		//Print("SetCameraPP - optics");
+		Print("SetCameraPP - optics");
 		if (!state || !m_opticsUsed || (PlayerBase.Cast(m_pPlayer) && launchedFrom != PlayerBase.Cast(m_pPlayer).GetCurrentPlayerCamera()))
 		{
 			PPEffects.ResetPPMask();
@@ -10,17 +10,18 @@ modded class DayZPlayerCameraOptics : DayZPlayerCameraIronsights
 			PPEffects.OverrideDOF(false, 0, 0, 0, 0, 1);
 			PPEffects.SetBlurOptics(0);
 			
-		    if (IsCameraNV())
-		    {
-		    	if (IsEntityAurora(m_opticsUsed))
-		    	{
-		    		SetNVPostprocess(99);
-		    	}
-		    	else
-		    	{
-		    		SetNVPostprocess(NVTypes.NV_GOGGLES);
-		    	}
-		    }
+		    if(IsCameraNV()){
+				if (IsCameraDualAurora())
+				{
+					SetNVPostprocess(99);
+				}
+				else if(IsCameraSingleAurora()){
+					SetNVPostprocess(98);
+				}
+				else{
+						SetNVPostprocess(NVTypes.NV_GOGGLES);
+				}
+			}
 			else
 			{
 				SetNVPostprocess(NVTypes.NONE);
