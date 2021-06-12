@@ -54,7 +54,7 @@ class Dismantle_HMDAurora2 extends RecipeBase{
 		m_ResultReplacesIngredient[0] = 0;// value == -1 means do nothing; a value >= 0 means this result will transfer item propertiesvariables, attachments etc.. from an ingredient value
 		//result1
 
-		AddResult("Aurora");//add results here
+		AddResult("AuroraCamera");//add results here
 
 		m_ResultSetFullQuantity[1] = false;//true = set full quantity, false = do nothing
 		m_ResultSetQuantity[1] = -1;//-1 = do nothing

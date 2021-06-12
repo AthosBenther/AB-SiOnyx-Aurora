@@ -1,0 +1,16 @@
+MetaFileClass {
+ Name "{D3BFAE9EB54D2A43}AB-SiOnyx-Aurora/Aurora/gui/icons/xhair.png"
+ Author "glados-m5"
+ ChangeDate 1707403907
+ Configurations {
+  PNGResourceClass PC {
+   SourceFile "xhair.png"
+  }
+  PNGResourceClass XBOX_ONE : PC {
+  }
+  PNGResourceClass PS4 : PC {
+  }
+  PNGResourceClass LINUX : PC {
+  }
+ }
+}

@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class Aurora
+	class AuroraCamera
 	{
 		units[] = {};
 		weapons[] = {};
@@ -8,7 +8,8 @@ class CfgPatches
 		requiredAddons[] =
 			{
 				"DZ_Data",
-				"DZ_Scripts"};
+				"DZ_Scripts"
+				};
 	};
 };
 class cfgVehicles
@@ -38,8 +39,8 @@ class cfgVehicles
 			useModelOptics = 1;
 			modelOptics = "AB-SiOnyx-Aurora\Aurora\Models\Aurora\hud.p3d";
 			preloadOpticType = "PreloadAurora";
-			opticsDisablePeripherialVision = 0.67;
-			opticsFlare = 1;
+			opticsDisablePeripherialVision = 0.0;
+			opticsFlare = 0;
 			opticsPPEffects[] = {};
 			opticsZoomMin = 0.5236;
 			opticsZoomMax = 0.5236;
@@ -49,8 +50,8 @@ class cfgVehicles
 			discreteDistance[] = {100};
 			discreteDistanceInitIndex = 0;
 			PPMaskProperties[] = {0.5, 0.5, 0.4, 0.05};
-			PPLensProperties[] = {1, 0.15, 0, 0};
-			PPBlurProperties = 1;
+			PPLensProperties[] = {0, 0, 0, 0};
+			PPBlurProperties = 0;
 		};
 		class AnimationSources
 		{
@@ -60,6 +61,13 @@ class cfgVehicles
 				animPeriod = 0.01;
 				initPhase = 0;
 			};
+		};
+		class EnergyManager
+		{
+			hasIcon = 1;
+			energyUsagePerSecond = 0.02;
+			plugType = 1;
+			attachmentAction = 1;
 		};
 	};
 };

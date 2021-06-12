@@ -23,7 +23,7 @@ class Recipe_HMDAurora extends RecipeBase{
 		
 		//INGREDIENTS
 		//ingredient 1
-		InsertIngredient(0,"Aurora");//you can insert multiple ingredients this way
+		InsertIngredient(0,"AuroraCamera");//you can insert multiple ingredients this way
 		
 		m_IngredientAddHealth[0] = 0;// 0 = do nothing
 		m_IngredientSetHealth[0] = -1; // -1 = do nothing
